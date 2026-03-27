@@ -172,6 +172,7 @@ const JournalEditor = ({ journal, onSave, onClose }) => {
                             value={formData.date}
                             onChange={handleChange}
                             className="form-input"
+                            max={new Date().toISOString().split('T')[0]}
                             required
                         />
                     </div>
