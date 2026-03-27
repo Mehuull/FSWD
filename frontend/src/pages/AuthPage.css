@@ -4,32 +4,76 @@
     align-items: center;
     justify-content: center;
     padding: var(--spacing-lg);
-    background: var(--theme-gradient);
+    background-color: #1a0b2e; /* Deep dark base */
     position: relative;
     overflow: hidden;
 }
 
-.auth-page::before {
-    content: '';
+/* Base container for all moving orbs */
+.aura-background {
     position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    animation: float 20s ease-in-out infinite;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+    /* This creates the magical glass blur blending all orbs together */
+    filter: blur(80px); 
+    opacity: 0.8;
 }
 
-@keyframes float {
+/* Individual Orbs */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    animation: drift 20s infinite alternate ease-in-out;
+}
 
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
+.orb-1 {
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, #db005e 0%, transparent 70%);
+    top: -10%;
+    left: -10%;
+    animation-delay: 0s;
+}
 
-    50% {
-        transform: translate(-20px, 20px);
-    }
+.orb-2 {
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, #8201d8 0%, transparent 70%);
+    bottom: -20%;
+    right: -10%;
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.orb-3 {
+    width: 45vw;
+    height: 45vw;
+    background: radial-gradient(circle, #ffae98 0%, transparent 70%);
+    top: 30%;
+    left: 50%;
+    animation-delay: -10s;
+    animation-duration: 22s;
+}
+
+.orb-4 {
+    width: 55vw;
+    height: 55vw;
+    background: radial-gradient(circle, #0168f5 0%, transparent 70%);
+    bottom: 10%;
+    left: -20%;
+    animation-delay: -15s;
+    animation-duration: 28s;
+}
+
+@keyframes drift {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(15vw, -10vh) scale(1.1); }
+    66% { transform: translate(-10vw, 15vh) scale(0.9); }
+    100% { transform: translate(5vw, 5vh) scale(1.2); }
 }
 
 .auth-container {
@@ -42,11 +86,15 @@
     z-index: 1;
 }
 
+/* Enhancing the auth card so the blurred aura shows through beautifully (Glassmorphism) */
 .auth-card {
-    background-color: var(--bg-primary);
+    background: rgba(255, 255, 255, 0.05); /* very transparent */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-xl);
     padding: var(--spacing-2xl);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     animation: fadeIn 0.5s ease-out;
 }
 
@@ -58,16 +106,15 @@
 .auth-title {
     font-size: 2.5rem;
     font-weight: 700;
-    background: var(--theme-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff; /* Replaced dark gradient with bright white */
     margin-bottom: var(--spacing-sm);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Adds readability depth */
 }
 
 .auth-subtitle {
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1rem;
+    font-weight: 500;
 }
 
 .auth-form {
@@ -78,6 +125,9 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+    color: #ffffff;
+    font-weight: 500;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .form-help {
@@ -109,21 +159,24 @@
 .auth-footer {
     text-align: center;
     padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
 }
 
 .auth-toggle {
     background: none;
     border: none;
-    color: var(--theme-primary);
-    font-weight: 600;
+    color: #4dc5ff; /* Bright, legible cyan-blue */
+    font-weight: 700;
     cursor: pointer;
     margin-left: var(--spacing-sm);
     transition: var(--transition-fast);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .auth-toggle:hover {
-    color: var(--theme-secondary);
+    color: #0088ff; /* Deeper blue on hover */
     text-decoration: underline;
 }
 
