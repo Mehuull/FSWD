@@ -1,0 +1,188 @@
+.archive-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.archive-view-modal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.archive-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.archive-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.year-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.year-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.year-btn:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.year-btn.active {
+    background-color: var(--theme-primary);
+    color: white;
+    border-color: var(--theme-primary);
+}
+
+.months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.month-block {
+    background-color: var(--bg-primary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    transition: var(--transition);
+}
+
+.month-block.has-entries {
+    cursor: pointer;
+}
+
+.month-block.has-entries:hover {
+    transform: translateY(-5px);
+    border-color: var(--theme-primary);
+    box-shadow: 0 8px 15px rgba(108, 92, 231, 0.2);
+}
+
+.month-block.empty {
+    opacity: 0.5;
+    background-color: var(--bg-secondary);
+}
+
+.count-badge {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background-color: var(--bg-tertiary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+}
+
+.entries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.entry-card {
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.entry-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.entry-card-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.entry-card .date {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    margin: 0;
+}
+
+.entry-card .preview {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.entry-card .actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.full-entry-card {
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 25px var(--shadow);
+}
+
+.entry-header {
+    margin-bottom: var(--spacing-md);
+}
+
+.entry-moods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.entry-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+    .months-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .entry-card .actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
